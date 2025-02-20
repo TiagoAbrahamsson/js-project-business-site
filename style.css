@@ -13,10 +13,13 @@ nav{
   justify-content: space-between;
   align-items: center;
   padding: 15px 40px;
+  position: relative;
+  z-index: 10;
 }
 .nav-links{
   display: flex;
   gap: 15px;
+  z-index: 15;
 }
 
 nav a{
@@ -31,22 +34,42 @@ nav a:hover {
   color: #ff4081; /* Pinkish hover effect */
   text-decoration: underline;
 }
+
+.hamburger {
+  display: none; /* Hidden on larger screens */
+  font-size: 30px;
+  background: none;
+  border: none;
+  cursor: pointer;
+  color: black;
+}
 /* Hide navigation links on mobile & tablet (we'll add a hamburger menu later) */
 @media (max-width: 1024px) {
-  nav {
-    flex-direction: column;
-    align-items: center;
-  }
-  
-  .nav-links {
-    flex-direction: column;
-    gap: 10px; /* Reduce space between links */
+  .hamburger {
+    display: block; /* Show menu button */
   }
 
-  nav a {
-    padding: 10px 20px; /* Adjust padding */
+  
+  .nav-links {
+    display: none; /* Hide links by default */
+    flex-direction: column;
+    position: absolute;
+    top: 60px;
+    right: 40px;
+    background: white;
+    padding: 15px;
+    border-radius: 5px;
+    box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
+  }
+
+  .nav-links a {
+    padding: 10px;
     text-align: center;
-    width: 100%; /* Make links full width */
+    width: 100%;
+  }
+
+  .nav-links.active {
+    display: flex;
   }
 }
 
@@ -147,6 +170,7 @@ nav a:hover {
   padding: 20px;
 }
 
+
 /* Mobile: 1 column */
 @media (max-width: 600px) {
   .grid-container {
@@ -201,5 +225,5 @@ footer {
   position: fixed;
   bottom: 0;
   width: 100%;
-  font-size: 14px;
+  font-size: 10px;
 }
